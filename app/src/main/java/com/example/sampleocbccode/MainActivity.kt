@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         submitJokeButton.setOnClickListener {
-            intent = Intent(this,GetJokeActivity::class.java)
+            intent = Intent(this,SubmitJokeActivity::class.java)
             startActivity(intent)
         }
 
