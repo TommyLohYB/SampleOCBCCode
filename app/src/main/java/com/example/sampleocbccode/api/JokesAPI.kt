@@ -12,7 +12,7 @@ import retrofit2.http.POST
 
 interface JokesAPI {
 
-    @GET("Programming?amount=2&type=single")
+    @GET("Programming?amount=10&type=twopart")
     suspend fun getJokes(): Response<GetJokesResponse>
 
     @Headers("Content-Type: application/json")
