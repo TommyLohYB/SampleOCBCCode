@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sampleocbccode.api.JokesAPI
+import com.example.sampleocbccode.model.Joke
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -19,7 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class GetJokeActivity : AppCompatActivity() {
 
-    var listOfJokes: ArrayList<String> = ArrayList()
+    var listOfJokes: ArrayList<Joke> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +56,7 @@ class GetJokeActivity : AppCompatActivity() {
                     val jokes = jokeResponse.jokes
                     listOfJokes.clear()
                     for(joke in jokes){
-                        listOfJokes.add(joke.joke)
+                        listOfJokes.add(joke)
                     }
                     withContext(Dispatchers.Main){
                         adapter.notifyDataSetChanged()
