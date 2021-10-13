@@ -39,7 +39,7 @@ class GetJokeActivity : AppCompatActivity() {
 
         //OnClickListener
         getJokeButton.setOnClickListener {
-            GlobalScope.launch(Dispatchers.Main) {
+            GlobalScope.launch(Dispatchers.IO) {
                 val getJokeResponse = api.getJokes()
                 if (getJokeResponse.isSuccessful) {
                     val jokeResponse = getJokeResponse.body()!!
