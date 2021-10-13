@@ -12,6 +12,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -23,9 +25,16 @@ class GetJokeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_getjoke)
 
+        //OkHttp
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.level = HttpLoggingInterceptor.Level.BODY
+        val okHttpClient = OkHttpClient.Builder().addInterceptor(interceptor).build()
+
         val BASE_URL = "https://v2.jokeapi.dev/joke/"
         val api =
-            Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create())
+            Retrofit.Builder().baseUrl(BASE_URL)
+                .client(okHttpClient)
+                .addConverterFactory(GsonConverterFactory.create())
                 .build().create(JokesAPI::class.java)
 
         //Init UI elements
@@ -46,7 +55,6 @@ class GetJokeActivity : AppCompatActivity() {
                     val jokes = jokeResponse.jokes
                     listOfJokes.clear()
                     for(joke in jokes){
-                        Log.d("Tommy",joke.joke)
                         listOfJokes.add(joke.joke)
                     }
                     withContext(Dispatchers.Main){
