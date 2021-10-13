@@ -1,0 +1,30 @@
+package com.example.sampleocbccode
+
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+
+class JokeAdapter(private var jokes: MutableList<String>) : RecyclerView.Adapter<JokeAdapter.ViewHolder>(){
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JokeAdapter.ViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_joke, parent, false)
+        return ViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val joke = jokes[position]
+        holder.jokeTextView.text = joke
+    }
+
+    override fun getItemCount(): Int {
+        return jokes.size
+    }
+
+    // Holds the views for adding it to image and text
+    class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
+        val jokeTextView: TextView = itemView.findViewById(R.id.jokeTextView)
+    }
+}
