@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.sampleocbccode.JokeAdapter
+import com.example.sampleocbccode.ui.adapters.JokeAdapter
 import com.example.sampleocbccode.R
 import com.example.sampleocbccode.domain.feature.joke.service.JokesAPI
 import com.example.sampleocbccode.domain.feature.joke.model.Joke
