@@ -5,3 +5,10 @@ data class GetJokesResponse(
     val amount: Int,
     val jokes: List<Joke>
 )
+
+data class Joke(
+    val category: String,
+    val type: String,
+    val setup: String,
+    val delivery: String,
+)
