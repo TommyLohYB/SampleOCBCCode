@@ -6,7 +6,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.sampleocbccode.R
-import com.example.sampleocbccode.api.JokesAPI
+import com.example.sampleocbccode.domain.feature.joke.service.JokesAPI
 import com.example.sampleocbccode.model.JokeFlag
 import com.example.sampleocbccode.model.SubmitJokeRequest
 import kotlinx.coroutines.Dispatchers

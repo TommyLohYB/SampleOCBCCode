@@ -1,4 +1,4 @@
-package com.example.sampleocbccode.api
+package com.example.sampleocbccode.domain.feature.joke.service
 
 import com.example.sampleocbccode.model.GetJokesResponse
 import com.example.sampleocbccode.model.SubmitJokeRequest
