@@ -9,6 +9,7 @@ import com.example.sampleocbccode.R
 import com.example.sampleocbccode.domain.feature.joke.service.JokesAPI
 import com.example.sampleocbccode.domain.feature.joke.model.JokeFlag
 import com.example.sampleocbccode.domain.feature.joke.model.SubmitJokeRequest
+import com.example.sampleocbccode.domain.network.RetrofitService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -28,20 +29,6 @@ class SubmitJokeActivity : AppCompatActivity() {
         val submitJokeButton = findViewById<Button>(R.id.submitJokeButton)
         var toastMessage: String = ""
         var failedSubmissionMessage = "Failed to submit joke. Please try again!"
-
-        //Init UI elements
-        val BASE_URL = "https://v2.jokeapi.dev/"
-
-        //OkHttp
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.level = HttpLoggingInterceptor.Level.BODY
-        val okHttpClient = OkHttpClient.Builder().addInterceptor(interceptor).build()
-
-        val api =
-            Retrofit.Builder().baseUrl(BASE_URL)
-                .client(okHttpClient)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build().create(JokesAPI::class.java)
 
         submitJokeButton.setOnClickListener {
             if (submitJokeEditText.text.isNullOrBlank()) {
@@ -65,7 +52,7 @@ class SubmitJokeActivity : AppCompatActivity() {
                         "en"
                     )
 
-                    val submitJokeResponse = api.submitJoke(submitJokeRequest)
+                    val submitJokeResponse = RetrofitService.jokeApi.submitJoke(submitJokeRequest)
                     if (submitJokeResponse.isSuccessful) {
                         val jokeResponse = submitJokeResponse.body()!!
 

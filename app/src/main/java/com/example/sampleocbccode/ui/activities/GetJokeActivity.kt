@@ -8,16 +8,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sampleocbccode.ui.adapters.JokeAdapter
 import com.example.sampleocbccode.R
-import com.example.sampleocbccode.domain.feature.joke.service.JokesAPI
 import com.example.sampleocbccode.domain.feature.joke.model.Joke
+import com.example.sampleocbccode.domain.network.RetrofitService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class GetJokeActivity : AppCompatActivity() {
 
@@ -26,18 +24,6 @@ class GetJokeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_getjoke)
-
-        //OkHttp
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.level = HttpLoggingInterceptor.Level.BODY
-        val okHttpClient = OkHttpClient.Builder().addInterceptor(interceptor).build()
-
-        val BASE_URL = "https://v2.jokeapi.dev/joke/"
-        val api =
-            Retrofit.Builder().baseUrl(BASE_URL)
-                .client(okHttpClient)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build().create(JokesAPI::class.java)
 
         //Init UI elements
         val getJokeButton = findViewById<Button>(R.id.getJokeButton)
@@ -51,7 +37,7 @@ class GetJokeActivity : AppCompatActivity() {
         //OnClickListener
         getJokeButton.setOnClickListener {
             GlobalScope.launch(Dispatchers.IO) {
-                val getJokeResponse = api.getJokes()
+                val getJokeResponse = RetrofitService.jokeApi.getJokes()
                 if (getJokeResponse.isSuccessful) {
                     val jokeResponse = getJokeResponse.body()!!
                     val jokes = jokeResponse.jokes
