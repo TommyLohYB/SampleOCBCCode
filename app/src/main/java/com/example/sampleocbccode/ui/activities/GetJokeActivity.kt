@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sampleocbccode.JokeAdapter
 import com.example.sampleocbccode.R
 import com.example.sampleocbccode.domain.feature.joke.service.JokesAPI
-import com.example.sampleocbccode.model.Joke
+import com.example.sampleocbccode.domain.feature.joke.model.Joke
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.sampleocbccode.model.Joke
+import com.example.sampleocbccode.domain.feature.joke.model.Joke
 
 class JokeAdapter(private var jokes: MutableList<Joke>) : RecyclerView.Adapter<JokeAdapter.ViewHolder>(){
 

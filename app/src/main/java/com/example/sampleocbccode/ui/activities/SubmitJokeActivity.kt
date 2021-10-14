@@ -7,8 +7,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.sampleocbccode.R
 import com.example.sampleocbccode.domain.feature.joke.service.JokesAPI
-import com.example.sampleocbccode.model.JokeFlag
-import com.example.sampleocbccode.model.SubmitJokeRequest
+import com.example.sampleocbccode.domain.feature.joke.model.JokeFlag
+import com.example.sampleocbccode.domain.feature.joke.model.SubmitJokeRequest
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

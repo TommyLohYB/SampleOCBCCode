@@ -1,4 +1,4 @@
-package com.example.sampleocbccode.model
+package com.example.sampleocbccode.domain.feature.joke.model
 
 data class GetJokesResponse(
     val error: Boolean,

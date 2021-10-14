@@ -1,8 +1,8 @@
 package com.example.sampleocbccode.domain.feature.joke.service
 
-import com.example.sampleocbccode.model.GetJokesResponse
-import com.example.sampleocbccode.model.SubmitJokeRequest
-import com.example.sampleocbccode.model.SubmitJokeResponse
+import com.example.sampleocbccode.domain.feature.joke.model.GetJokesResponse
+import com.example.sampleocbccode.domain.feature.joke.model.SubmitJokeRequest
+import com.example.sampleocbccode.domain.feature.joke.model.SubmitJokeResponse
 
 import retrofit2.Response
 import retrofit2.http.Body

@@ -1,4 +1,4 @@
-package com.example.sampleocbccode.model
+package com.example.sampleocbccode.domain.feature.joke.model
 
 import com.google.gson.annotations.SerializedName
 
