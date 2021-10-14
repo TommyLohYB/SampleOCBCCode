@@ -9,17 +9,17 @@ import com.example.sampleocbccode.R
 import com.example.sampleocbccode.domain.feature.joke.service.JokesAPI
 import com.example.sampleocbccode.domain.feature.joke.model.JokeFlag
 import com.example.sampleocbccode.domain.feature.joke.model.SubmitJokeRequest
+import com.example.sampleocbccode.domain.feature.joke.repository.JokeRepository
 import com.example.sampleocbccode.domain.network.RetrofitService
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class SubmitJokeActivity : AppCompatActivity() {
+
+    private val jokeRepository = JokeRepository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +35,7 @@ class SubmitJokeActivity : AppCompatActivity() {
                 toastMessage = "Please do not leave it blank"
                 Toast.makeText(applicationContext, toastMessage, Toast.LENGTH_SHORT).show()
             } else {
-                GlobalScope.launch(Dispatchers.IO) {
+                CoroutineScope(Dispatchers.IO).launch {
                     val submitJokeRequest = SubmitJokeRequest(
                         3,
                         "Misc",
@@ -52,16 +52,9 @@ class SubmitJokeActivity : AppCompatActivity() {
                         "en"
                     )
 
-                    val submitJokeResponse = RetrofitService.jokeApi.submitJoke(submitJokeRequest)
-                    if (submitJokeResponse.isSuccessful) {
-                        val jokeResponse = submitJokeResponse.body()!!
-
-                        //Display Toast
-                        if (jokeResponse.error) toastMessage = failedSubmissionMessage
-                        else toastMessage = jokeResponse.message
-                        withContext(Dispatchers.Main){
-                            Toast.makeText(applicationContext, toastMessage, Toast.LENGTH_SHORT).show()
-                        }
+                    toastMessage = jokeRepository.submitJoke(submitJokeRequest)
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(applicationContext, toastMessage, Toast.LENGTH_SHORT).show()
                     }
                 }
             }
