@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sampleocbccode.R
 import com.example.sampleocbccode.domain.feature.joke.model.Joke
 
-class JokeAdapter(private var jokes: MutableList<Joke>) : RecyclerView.Adapter<JokeAdapter.ViewHolder>(){
+class JokeAdapter(private var jokes: List<Joke>) : RecyclerView.Adapter<JokeAdapter.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
