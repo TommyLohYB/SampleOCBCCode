@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable name="jokeContent" type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,7 +19,6 @@
             android:layout_marginTop="20dp"
             android:background="@android:color/darker_gray"
             android:gravity="top|left"
-            android:text="@{jokeContent}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +30,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:text="Submit Joke"
-            android:onClick=""
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
