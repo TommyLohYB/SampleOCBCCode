@@ -1,12 +1,13 @@
-package com.example.sampleocbccode
+package com.example.sampleocbccode.ui.activities
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.sampleocbccode.JokeAdapter
+import com.example.sampleocbccode.R
 import com.example.sampleocbccode.api.JokesAPI
 import com.example.sampleocbccode.model.Joke
 import kotlinx.coroutines.Dispatchers
