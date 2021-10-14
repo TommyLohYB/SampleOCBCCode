@@ -60,4 +60,6 @@ dependencies {
     //OkHTTP
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor")
+
+    kapt 'com.android.databinding:compiler:2.3.1'
 }
