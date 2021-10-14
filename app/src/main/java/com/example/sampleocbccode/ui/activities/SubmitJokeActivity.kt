@@ -18,8 +18,8 @@ class SubmitJokeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        databinding = DataBindingUtil.setContentView(this,R.layout.activity_submitjoke)
-        var toastMessage: String = ""
+        databinding = DataBindingUtil.setContentView(this, R.layout.activity_submitjoke)
+        var toastMessage = ""
 
         databinding.submitJokeButton.setOnClickListener {
             if (databinding.submitJokeEditText.text.isNullOrBlank()) {
