@@ -31,12 +31,13 @@ class JokeAdapter(private var jokes: MutableList<Joke>) :
         return jokes.size
     }
 
-    class ViewHolder(val binding: ItemJokeBinding) :
+    class ViewHolder(private val binding: ItemJokeBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Joke) {
-            binding.apply {
+            with(binding) {
                 jokeSetup = item.setup
                 jokeDelivery = item.delivery
+                executePendingBindings()
             }
         }
     }
