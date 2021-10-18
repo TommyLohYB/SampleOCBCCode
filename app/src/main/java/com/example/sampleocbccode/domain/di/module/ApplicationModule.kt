@@ -1,7 +1,9 @@
 package com.example.sampleocbccode.domain.di.module
 import android.provider.SyncStateContract
+import com.example.sampleocbccode.domain.Person
 import com.example.sampleocbccode.domain.feature.joke.service.JokesAPI
 import com.example.sampleocbccode.domain.network.RetrofitService
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

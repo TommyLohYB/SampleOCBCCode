@@ -8,7 +8,9 @@ import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class JokeRepository @Inject constructor(private val jokesAPI: JokesAPI) {
 
     suspend fun getJoke(): MutableList<Joke> {
