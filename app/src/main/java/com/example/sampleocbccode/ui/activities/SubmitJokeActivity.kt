@@ -6,15 +6,21 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.sampleocbccode.R
 import com.example.sampleocbccode.databinding.ActivitySubmitjokeBinding
+import com.example.sampleocbccode.domain.feature.joke.model.Joke
 import com.example.sampleocbccode.domain.feature.joke.model.JokeFlag
 import com.example.sampleocbccode.domain.feature.joke.model.SubmitJokeRequest
 import com.example.sampleocbccode.domain.feature.joke.repository.JokeRepository
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class SubmitJokeActivity : AppCompatActivity() {
 
-    private val jokeRepository = JokeRepository()
     private lateinit var databinding: ActivitySubmitjokeBinding
+
+    @Inject
+    lateinit var jokeRepo: JokeRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +49,7 @@ class SubmitJokeActivity : AppCompatActivity() {
                         "en"
                     )
 
-                    toastMessage = jokeRepository.submitJoke(submitJokeRequest)
+                    toastMessage = jokeRepo.submitJoke(submitJokeRequest)
                     withContext(Dispatchers.Main) {
                         Toast.makeText(applicationContext, toastMessage, Toast.LENGTH_SHORT).show()
                     }
