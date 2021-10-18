@@ -1,5 +1,4 @@
-package com.example.sampleocbccode.domain
-import com.example.sampleocbccode.BuildConfig
+package com.example.sampleocbccode.domain.di.module
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
